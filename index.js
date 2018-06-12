@@ -6,12 +6,15 @@ type Query {
     links: [Link!]!
 }
 
+type Mutation {
+    addLink(url: String!, descrition: String!): Link!
+}
+
 type Link {
     id: ID!
     description: String!
     url: String!
 }
-
 `
 
 let articleLinks = [{
