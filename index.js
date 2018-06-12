@@ -30,11 +30,23 @@ let articleLinks = [{
         url: 'https://www.graphqlhub.com/',
         description: 'Some practice APIs to play around with queries'
     }]
+    let idCount = articleLinks.length
 
 const resolvers = {
     Query: {
         welcome: () => `Hacker News clone begins.`,
         links: () => articleLinks
+    },
+    Mutation: {
+        addLink: (root, args) => {
+            const link = {
+                id: `link-${idCount++}`,
+                description: args.description,
+                url: args.url,
+            }
+            articleLinks.push(link)
+            return link
+        }
     }
 
 }
